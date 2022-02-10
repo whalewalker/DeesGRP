@@ -2,8 +2,10 @@ package com.DeesGRP.repository;
 
 import com.DeesGRP.model.Contact;
 
+import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class PhoneBook implements iPhoneable{
     private List<Contact> contacts = new ArrayList<>();
@@ -28,6 +30,12 @@ public class PhoneBook implements iPhoneable{
 
     @Override
     public void deleteContact(String id) {
+        for (Contact contact: contacts) {
+            if(Objects.equals(contact.getId(), id)){
+                contacts.remove(contact);
+                break;
+            }
+        }
 
     }
 

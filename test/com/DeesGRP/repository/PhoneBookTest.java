@@ -6,6 +6,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.InvalidObjectException;
+import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -62,4 +64,23 @@ class PhoneBookTest {
         //Todo add more test cases for better validation
         assertEquals(1, phoneBook.getContactCount());
     }
+
+    @Test
+    @DisplayName("User can delete contact")
+    public void contactCanBeDeleted(){
+//        Given that I have a contactList
+        PhoneBook phoneBook = new PhoneBook();
+        Contact contact1 = new Contact("Esther","09095861220");
+        Contact contact2 = new Contact("Dami","09095861330");
+        phoneBook.addContact(contact1);
+        phoneBook.addContact(contact2);
+        assertEquals(2,phoneBook.getContactCount());
+
+        // contact can be deleted
+        phoneBook.deleteContact(contact2.getId());
+        // check that contact has been deleted
+        assertEquals(1,phoneBook.getContactCount());
+    }
+
+
 }
