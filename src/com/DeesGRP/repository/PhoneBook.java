@@ -9,10 +9,13 @@ public class PhoneBook implements iPhoneable{
     private List<Contact> contacts = new ArrayList<>();
     private final List<Contact> shareContact = new ArrayList<>();
     private final List<Contact> blockContact = new ArrayList<>();
-    @Override
+
+
+
     /*
-    Add a contact to the list of contacts
-     */
+   Add a contact to the list of contacts
+    */
+    @Override
     public void addContact(Contact contact) {
         contacts.add(contact);
     }
@@ -71,7 +74,7 @@ public class PhoneBook implements iPhoneable{
 
     /*
     This method was created for test purpose. It will be removed
-    when add contact is implemented
+    when add contact and get all contact is implemented
      */
     public void setContacts(List<Contact> contacts) {
         this.contacts = contacts;
