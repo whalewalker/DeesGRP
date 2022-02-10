@@ -25,6 +25,13 @@ public class PhoneBook implements iPhoneable{
     public int getContactCount() {
         return contacts.size();
     }
+    /*
+    This method was created for test purpose, to check the list of contacts
+    that have been added to the list and can be deleted later
+     */
+    public List<Contact> getAllContactInList() {
+        return contacts;
+    }
 
     @Override
     public void deleteContact(String id) {

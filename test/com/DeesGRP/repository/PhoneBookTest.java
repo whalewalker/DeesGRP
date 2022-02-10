@@ -61,5 +61,8 @@ class PhoneBookTest {
         //check that contact has been added
         //Todo add more test cases for better validation
         assertEquals(1, phoneBook.getContactCount());
+        List<Contact> expected = new ArrayList<>(Arrays.asList(mongoDB));
+        List<Contact> actual = phoneBook.getAllContactInList();
+        assertArrayEquals(expected.toArray(), actual.toArray());
     }
 }
