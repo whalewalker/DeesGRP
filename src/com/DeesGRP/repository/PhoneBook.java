@@ -6,16 +6,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PhoneBook implements iPhoneable{
-    private List<Contact> contacts;
+    private List<Contact> contacts = new ArrayList<>();
     private final List<Contact> shareContact = new ArrayList<>();
     private final List<Contact> blockContact = new ArrayList<>();
-
     @Override
     /*
-
+    Add a contact to the list of contacts
      */
     public void addContact(Contact contact) {
-
+        contacts.add(contact);
+    }
+    /*
+    This method was created to check the count of contacts added to the phone book
+     */
+    public int getContactCount() {
+        return contacts.size();
     }
 
     @Override
@@ -75,4 +80,6 @@ public class PhoneBook implements iPhoneable{
     public List<Contact> getBlockContact() {
         return blockContact;
     }
+
+
 }

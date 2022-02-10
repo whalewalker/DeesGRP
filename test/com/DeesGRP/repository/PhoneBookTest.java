@@ -46,4 +46,19 @@ class PhoneBookTest {
         assertEquals(phoneBook.getBlockContact().size(), 1);
         assertTrue(phoneBook.getBlockContact().get(0).isBlock());
     }
+
+    @Test
+    @DisplayName("Contact can be added to the phonebook")
+    public void contactCanBeAdded(){
+        //Given that
+            // I have a phonebook and a contact
+        PhoneBook phoneBook = new PhoneBook();
+        Contact mongoDB = new Contact("Abdullahi", "56891234091");
+
+        //when i add contact to the phonebook
+        phoneBook.addContact(mongoDB);
+
+        //check that contact has been added
+        assertEquals(1, phoneBook.getContactCount());
+    }
 }
