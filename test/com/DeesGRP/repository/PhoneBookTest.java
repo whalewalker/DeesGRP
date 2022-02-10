@@ -56,6 +56,9 @@ class PhoneBookTest {
         Contact mongoDB = new Contact("Abdullahi", "56891234091");
 
         //when i add contact to the phonebook
+        phoneBook.addContact(mongoDB);
 
+        //check that contact has been added
+        assertEquals(1, phoneBook.getContactCount());
     }
 }
