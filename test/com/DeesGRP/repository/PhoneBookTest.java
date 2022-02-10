@@ -59,6 +59,7 @@ class PhoneBookTest {
         phoneBook.addContact(mongoDB);
 
         //check that contact has been added
+        //Todo add more test cases for better validation
         assertEquals(1, phoneBook.getContactCount());
     }
 }
