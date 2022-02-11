@@ -3,6 +3,7 @@ package com.DeesGRP.repository;
 import com.DeesGRP.model.Contact;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class PhoneBook implements iPhoneable{
@@ -38,7 +39,7 @@ public class PhoneBook implements iPhoneable{
 
     @Override
     public List<Contact> getAllContact() {
-        return null;
+        return contacts;
     }
 
     @Override
