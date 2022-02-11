@@ -63,7 +63,7 @@ class PhoneBookTest {
         assertEquals(1, phoneBook.getContactCount());
     }
 
-        @Test
+    @Test
 
     void testContactListCanBeGotten(){
         //given that we have a phonebook and contacts
