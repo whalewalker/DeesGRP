@@ -81,7 +81,8 @@ class PhoneBookTest {
         phoneBook.shareContact(fola.getId(), mongoDB);
 
         //Assert that the contact has been added to shared contact list
-        assertEquals(1, phoneBook.getShareContact());
+        List<Contact>expected = new ArrayList<>(Arrays.asList(mongoDB));
+        assertArrayEquals(expected.toArray(),phoneBook.getShareContact().toArray());
 
     }
 }

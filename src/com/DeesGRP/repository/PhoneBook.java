@@ -46,8 +46,9 @@ public class PhoneBook implements iPhoneable{
         shareContact.add(contact);
     }
 
-    public int getShareContact(){
-        return shareContact.size();
+    public List<Contact> getShareContact(){
+       return shareContact;
+//        return shareContact.size();
     }
 
     @Override
