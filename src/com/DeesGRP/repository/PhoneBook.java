@@ -43,7 +43,16 @@ public class PhoneBook implements iPhoneable{
 
     @Override
     public void shareContact(String id, Contact contact) {
+        shareContact.add(contact);
+    }
 
+    public int getShareContact(){
+        return shareContact.size();
+    }
+
+    @Override
+    public Contact searchContact(String nameOrPhoneNumber) {
+        return null;
     }
 
     /*
@@ -64,11 +73,6 @@ public class PhoneBook implements iPhoneable{
             }
         }
 
-    }
-
-    @Override
-    public Contact searchContact(String nameOrPhoneNumber) {
-        return null;
     }
 
 
