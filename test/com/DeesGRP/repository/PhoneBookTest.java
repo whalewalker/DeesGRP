@@ -88,4 +88,23 @@ class PhoneBookTest {
         assertArrayEquals(expected.toArray(),phoneBook.getShareContact().toArray());
 
     }
+
+    @Test
+
+    void testContactListCanBeGotten(){
+        //given that we have a phonebook and contacts
+        PhoneBook phoneBook = new PhoneBook();
+        Contact lota = new Contact("lota","09056819817");
+        Contact dee = new Contact("dee","09056819817");
+        //when we have contacts in it
+        phoneBook.addContact(lota);
+        phoneBook.addContact(dee);
+        //assert
+        assertEquals(2, phoneBook.getAllContact().size());
+        List<Contact> expected = new ArrayList<>(Arrays.asList(lota, dee));  //{lota, dee}.toArray() [lota,dee]
+        assertArrayEquals(expected.toArray(), phoneBook.getAllContact().toArray());
+    }
+
+
+
 }
