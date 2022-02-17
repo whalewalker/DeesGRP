@@ -65,4 +65,27 @@ class PhoneBookTest {
         List<Contact> actual = phoneBook.getAllContactInList();
         assertArrayEquals(expected.toArray(), actual.toArray());
     }
+
+    @Test
+    @DisplayName("Contact can be shared to other contacts in the phonebook")
+    public void contactCanBeSharedTest(){
+        //Given that
+        // I have a phonebook
+        PhoneBook phoneBook = new PhoneBook();
+        Contact mongoDB = new Contact("Abdullahi", "56891234091");
+        Contact fola = new Contact("Afolabi", "55780123080");
+
+        //The contact I want to share and the one I'm sharing to, exist.
+        phoneBook.addContact(fola);
+        phoneBook.addContact(mongoDB);
+
+        //When
+        // I can share a contact name
+        phoneBook.shareContact(fola.getId(), mongoDB);
+
+        //Assert that the contact has been added to shared contact list
+        List<Contact>expected = new ArrayList<>(Arrays.asList(mongoDB));
+        assertArrayEquals(expected.toArray(),phoneBook.getShareContact().toArray());
+
+    }
 }
