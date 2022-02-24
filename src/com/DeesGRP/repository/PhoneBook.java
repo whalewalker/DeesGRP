@@ -1,6 +1,7 @@
 package com.DeesGRP.repository;
 
 import com.DeesGRP.model.Contact;
+import com.DeesGRP.model.NoFavoriteContactException;
 
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class PhoneBook implements iPhoneable{
+    private List <Contact> favorites = new ArrayList<>();
     private List<Contact> contacts = new ArrayList<>();
     private final List<Contact> shareContact = new ArrayList<>();
     private final List<Contact> blockContact = new ArrayList<>();
@@ -105,5 +107,17 @@ public class PhoneBook implements iPhoneable{
         return blockContact;
     }
 
+    /*
+  Filter list by favorite contacts,
+  which first add some contacts to favorite list
+  and all favorite contacts can be gotten back
+   */
+    public void addFavorite(Contact... favoriteContacts) {
+        favorites.addAll(Arrays.asList(favoriteContacts));
+    }
 
+    public List<Contact> getFavoriteContacts() throws NoFavoriteContactException {
+        if (favorites.isEmpty()) throw new NoFavoriteContactException("No favorite contacts");
+        return favorites;
+    }
 }
