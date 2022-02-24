@@ -1,6 +1,7 @@
 package com.DeesGRP.repository;
 
 import com.DeesGRP.model.Contact;
+import com.DeesGRP.model.NoFavoriteContactException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -125,5 +126,40 @@ class PhoneBookTest {
         assertEquals(1,phoneBook.getContactCount());
     }
 
+    @DisplayName("User can filter contact by (favorite contact, speed dail)")
+    @Test
+    public void testThatUserCanFilterContactByFavoriteContact() throws NoFavoriteContactException {
+        //given that i have a list of contacts
+        PhoneBook phonebook = new PhoneBook();
+        phonebook.addContact(new Contact("Adeola","09098787876"));
+        phonebook.addContact(new Contact("Lota","09092347876"));
+        phonebook.addContact(new Contact("Esther","09098787776"));
+        phonebook.addContact(new Contact("Dami","09098700006"));
+        phonebook.addContact(new Contact("dami gey","09001787876"));
+        phonebook.addContact(new Contact("Adeola1","090987879006"));
+
+        //when i add a contact(s) to favorite
+        Contact dee = new Contact("Adeola","09098787876");
+        Contact esther = new Contact("Esther","09098787776");
+        phonebook.addFavorite(dee, esther);
+        //assert that contacts are added to favorite and i can get a list of favorite contacts
+
+        List<Contact> favorites = phonebook.getFavoriteContacts();
+        List<Contact> expected = new ArrayList<Contact>(Arrays.asList(dee, esther));
+        assertArrayEquals(expected.toArray(), favorites.toArray());
+    }
+
+    @Test
+    public void testThatWheNoFavoriteExitsThrowsException() {
+        PhoneBook phonebook = new PhoneBook();
+        phonebook.addContact(new Contact("Adeola","09098787876"));
+        phonebook.addContact(new Contact("Lota","09092347876"));
+        phonebook.addContact(new Contact("Esther","09098787776"));
+        phonebook.addContact(new Contact("Dami","09098700006"));
+        phonebook.addContact(new Contact("dami gey","09001787876"));
+        phonebook.addContact(new Contact("Adeola1","090987879006"));
+
+        assertThrows(NoFavoriteContactException.class, ()->phonebook.getFavoriteContacts());
+    }
 
 }
